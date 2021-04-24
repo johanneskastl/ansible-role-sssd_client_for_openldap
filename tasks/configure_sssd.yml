@@ -1,0 +1,12 @@
+---
+# sssd_client_for_openldap/tasks/configure_sssd.yml
+
+- name: 'Create /etc/sssd/sssd.conf'
+  template:
+    src: 'etc_sssd_sssd.conf.j2'
+    dest: '/etc/sssd/sssd.conf'
+    owner: 'root'
+    group: 'root'
+    mode: '0600'
+  notify:
+    'Restart SSSD service'
