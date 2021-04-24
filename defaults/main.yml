@@ -1,0 +1,5 @@
+---
+# sssd_client_for_openldap/defaults/main.yml
+
+# service that should enabled and started
+sssd_service: 'sssd'
