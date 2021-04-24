@@ -3,3 +3,7 @@
 
 # service that should enabled and started
 sssd_service: 'sssd'
+
+# sssd.conf
+path_to_sssd_conf_dir: '/etc/sssd/'
+path_to_sssd_conf: "{{ path_to_sssd_conf_dir }}/sssd.conf"
