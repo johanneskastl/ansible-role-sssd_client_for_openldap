@@ -7,3 +7,14 @@ sssd_service: 'sssd'
 # sssd.conf
 path_to_sssd_conf_dir: '/etc/sssd/'
 path_to_sssd_conf: "{{ path_to_sssd_conf_dir }}/sssd.conf"
+
+# settings in sssd.conf
+default_config_file_version: 2
+default_services: 'nss, pam'
+default_nss_reconnection_retries: 4
+default_pam_reconnection_retries: 4
+default_ldap_schema: 'rfc2307'
+default_id_provider: 'ldap'
+default_auth_provider: 'ldap'
+default_chpass_provider: 'ldap'
+default_cache_credentials: 'True'
