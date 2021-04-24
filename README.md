@@ -6,7 +6,7 @@ Connect sssd to a OpenLDAP server
 Requirements
 ------------
 
-None.
+You obviously need a OpenLDAP server...
 
 Role Variables
 --------------
