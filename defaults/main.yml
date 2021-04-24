@@ -6,7 +6,7 @@ sssd_service: 'sssd'
 
 # sssd.conf
 path_to_sssd_conf_dir: '/etc/sssd/'
-path_to_sssd_conf: "{{ path_to_sssd_conf_dir }}/sssd.conf"
+path_to_sssd_conf: "{{ path_to_sssd_conf_dir }}sssd.conf"
 
 # settings in sssd.conf
 default_config_file_version: 2
