@@ -1,10 +1,10 @@
 ---
 # sssd_client_for_openldap/tasks/configure_sssd.yml
 
-- name: 'Create /etc/sssd/sssd.conf'
+- name: "Create {{ path_to_sssd_conf }}"
   template:
     src: 'etc_sssd_sssd.conf.j2'
-    dest: '/etc/sssd/sssd.conf'
+    dest: "{{ path_to_sssd_conf }}"
     owner: 'root'
     group: 'root'
     mode: '0600'
