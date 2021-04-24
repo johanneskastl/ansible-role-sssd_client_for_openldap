@@ -1,0 +1,17 @@
+---
+# sssd_client_for_openldap/tasks/main.yml
+
+- name: "Load variables"
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "vars_{{ ansible_distribution }}.yml"
+    - "vars_{{ ansible_os_family }}.yml"
+
+- name: 'Install packages'
+  include_tasks: install_packages.yml
+
+- name: 'Configure SSSD'
+  include_tasks: configure_sssd.yml
+
+- name: 'Start and nable the SSSD service'
+  include_tasks: start_and_enable_sssd_service.yml
