@@ -7,6 +7,11 @@
     - "vars_{{ ansible_distribution }}.yml"
     - "vars_{{ ansible_os_family }}.yml"
 
+- name: 'Check for required variables'
+  fail:
+    msg: 'You need to provide a value for ldap_tls_cacert or ldap_tls_cacertdir'
+  when: 'ldap_tls_cacert is undefined and ldap_tls_cacertdir is undefined'
+
 - name: 'Install packages'
   include_tasks: install_packages.yml
 
