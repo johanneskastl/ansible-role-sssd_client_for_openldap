@@ -5,7 +5,7 @@
 config_file_version = {{ config_file_version | default(default_config_file_version) }}
 services = {{ services | default(default_services) }}
 domains = {{ domains }}
-{% if debug_level is defined%}
+{% if debug_level is defined %}
 debug_level = {{ debug_level }}
 {% endif %}
 
