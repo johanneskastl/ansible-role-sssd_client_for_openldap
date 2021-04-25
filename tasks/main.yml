@@ -18,5 +18,5 @@
 - name: 'Configure SSSD'
   include_tasks: configure_sssd.yml
 
-- name: 'Start and nable the SSSD service'
+- name: 'Start and enable the SSSD service'
   include_tasks: start_and_enable_sssd_service.yml
