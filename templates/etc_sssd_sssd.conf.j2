@@ -5,6 +5,9 @@
 config_file_version = {{ config_file_version | default(default_config_file_version) }}
 services = {{ services | default(default_services) }}
 domains = {{ domains }}
+{% if debug_level is defined%}
+debug_level = {{ debug_level }}
+{% endif %}
 
 [nss]
 reconnection_retries = {{ nss_reconnection_retries | default(default_nss_reconnection_retries) }}
