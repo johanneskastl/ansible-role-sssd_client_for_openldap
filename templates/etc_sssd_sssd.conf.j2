@@ -26,3 +26,10 @@ auth_provider = {{ auth_provider | default(default_auth_provider) }}
 chpass_provider = {{ chpass_provider | default(default_chpass_provider) }}
 ldap_chpass_uri = {{ ldap_chpass_uri | default(ldap_uri) }}
 cache_credentials = {{ cache_credentials | default(default_cache_credentials) }}
+{% if ldap_tls_cacert is defined %}
+ldap_tls_cacert = {{ ldap_tls_cacert }}
+{% endif %}
+{% if ldap_tls_cacertdir is defined %}
+ldap_tls_cacertdir = {{ ldap_tls_cacertdir }}
+{% endif %}
+ldap_id_use_start_tls = {{ ldap_id_use_start_tls | default(default_ldap_id_use_start_tls) }}
