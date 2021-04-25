@@ -16,20 +16,20 @@ reconnection_retries = {{ nss_reconnection_retries | default(default_nss_reconne
 reconnection_retries = {{ pam_reconnection_retries | default(default_pam_reconnection_retries) }}
 
 [domain/TRAINING]
-ldap_schema = {{ ldap_schema | default(default_ldap_schema) }}
-ldap_uri = {{ ldap_uri }}
-ldap_search_base = {{ ldap_search_base | default(default_ldap_search_base) }}
-ldap_default_bind_dn = {{ ldap_default_bind_dn }}
-ldap_default_authtok = {{ ldap_default_authtok }}
 id_provider = {{ id_provider | default(default_id_provider) }}
 auth_provider = {{ auth_provider | default(default_auth_provider) }}
 chpass_provider = {{ chpass_provider | default(default_chpass_provider) }}
-ldap_chpass_uri = {{ ldap_chpass_uri | default(ldap_uri) }}
 cache_credentials = {{ cache_credentials | default(default_cache_credentials) }}
+ldap_schema = {{ ldap_schema | default(default_ldap_schema) }}
+ldap_search_base = {{ ldap_search_base | default(default_ldap_search_base) }}
+ldap_default_bind_dn = {{ ldap_default_bind_dn }}
+ldap_default_authtok = {{ ldap_default_authtok }}
+ldap_id_use_start_tls = {{ ldap_id_use_start_tls | default(default_ldap_id_use_start_tls) }}
 {% if ldap_tls_cacert is defined %}
 ldap_tls_cacert = {{ ldap_tls_cacert }}
 {% endif %}
 {% if ldap_tls_cacertdir is defined %}
 ldap_tls_cacertdir = {{ ldap_tls_cacertdir }}
 {% endif %}
-ldap_id_use_start_tls = {{ ldap_id_use_start_tls | default(default_ldap_id_use_start_tls) }}
+ldap_uri = {{ ldap_uri }}
+ldap_chpass_uri = {{ ldap_chpass_uri | default(ldap_uri) }}
