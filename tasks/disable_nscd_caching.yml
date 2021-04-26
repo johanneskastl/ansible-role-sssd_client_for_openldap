@@ -1,0 +1,30 @@
+---
+# sssd_client_for_openldap/tasks/disable_nscd_caching.yml
+
+- name: 'Check if the nscd.conf is existing'
+  stat:
+    path: "{{ path_to_nscd_conf }}"
+  register: check_for_nscd_conf
+
+- name: 'Disable host and group caching in nscd.conf, if it exists'
+  lineinfile:
+    path: "{{ path_to_nscd_conf }}"
+    regex: "{{ item.regex }}"
+    line: "{{ item.line }}"
+  loop:
+    - regex: '^enable-cache\s*passwd.*'
+      line: 'enable-cache            passwd  no'
+    - regex: '^enable-cache\s*group.*'
+      line: 'enable-cache            group   no'
+  when: 'check_for_nscd_conf.stat.exists | bool'
+  notify:
+    'Restart SSSD service'
+
+- name: 'Disable the nscd service completely'
+  service:
+    name: "{{ nscd_service_name }}"
+    state: 'stopped'
+    enabled: 'false'
+    masked: 'true'
+  notify:
+    'Restart SSSD service'
