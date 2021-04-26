@@ -13,6 +13,8 @@
   command:
     cmd: 'authconfig --enablesssd --update'
   when: 'usesssd_in_sysconfig_authconfig.stdout == ""'
+  notify:
+    'Restart SSSD service'
 
 - name: 'Check if USESSSDAUTH is already enabled in /etc/sysconfig/authconfig'
   command:
@@ -34,3 +36,5 @@
   command:
     cmd: 'authconfig --enablesssdauth --update'
   when: 'sss_in_pam_configuration.stdout == "" or usesssdauth_in_sysconfig_authconfig == ""'
+  notify:
+    'Restart SSSD service'
