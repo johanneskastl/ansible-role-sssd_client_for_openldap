@@ -15,6 +15,10 @@
 - name: 'Install packages'
   include_tasks: install_packages.yml
 
+- name: 'Enable sssd via authconfig'
+  include_tasks: enable_sssd_via_authconfig.yml
+  when: 'ansible_os_family == "RedHat"'
+
 - name: 'Configure SSSD'
   include_tasks: configure_sssd.yml
 
