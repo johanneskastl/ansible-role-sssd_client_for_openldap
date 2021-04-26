@@ -1,0 +1,7 @@
+---
+# sssd_client_for_openldap/vars/vars_CentOS.yml
+
+# packages to be installed
+sssd_packages:
+  - sssd
+  - sssd-tools
