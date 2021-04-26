@@ -15,6 +15,9 @@
 - name: 'Install packages'
   include_tasks: install_packages.yml
 
+- name: 'Disable nscd caching'
+  include_tasks: disable_nscd_caching.yml
+
 - name: 'Enable sssd via authconfig'
   include_tasks: enable_sssd_via_authconfig.yml
   when: 'ansible_os_family == "RedHat"'
