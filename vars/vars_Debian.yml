@@ -7,3 +7,7 @@ sssd_packages:
   - sssd-tools
   - libnss-sss
   - libpam-sss
+
+# nscd service
+nscd_service_name: 'unscd'
+path_to_nscd_conf: '/etc/nscd.conf'
