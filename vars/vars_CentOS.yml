@@ -5,3 +5,7 @@
 sssd_packages:
   - sssd
   - sssd-tools
+
+# nscd service
+nscd_service_name: 'nscd'
+path_to_nscd_conf: '/etc/nscd.conf'
