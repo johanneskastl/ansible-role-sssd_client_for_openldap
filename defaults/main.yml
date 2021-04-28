@@ -10,7 +10,7 @@ path_to_sssd_conf: "{{ path_to_sssd_conf_dir }}sssd.conf"
 
 # settings in sssd.conf
 default_config_file_version: 2
-default_services: 'nss, pam'
+default_sssd_auth_services: 'nss, pam'
 default_nss_reconnection_retries: 4
 default_pam_reconnection_retries: 4
 default_ldap_schema: 'rfc2307'
