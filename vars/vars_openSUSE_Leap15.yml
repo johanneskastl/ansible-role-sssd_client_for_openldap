@@ -1,0 +1,12 @@
+---
+# sssd_client_for_openldap/vars/vars_openSUSE_Leap15.yml
+
+# packages to be installed
+sssd_packages:
+  - sssd
+  - sssd-tools
+  - sssd-ldap
+
+# nscd service
+nscd_service_name: 'nscd'
+path_to_nscd_conf: '/etc/nscd.conf'
