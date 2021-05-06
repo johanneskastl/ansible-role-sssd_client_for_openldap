@@ -9,5 +9,5 @@ sssd_packages:
   - libpam-sss
 
 # nscd service
-nscd_service_name: 'unscd'
+nscd_service_name: 'unscd.service'
 path_to_nscd_conf: '/etc/nscd.conf'
