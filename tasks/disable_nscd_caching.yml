@@ -19,7 +19,7 @@
       line: '\1no'
   when: 'check_for_nscd_conf.stat.exists | bool'
   notify:
-    'Restart SSSD service'
+    - 'Restart SSSD service'
 
 - name: 'Populate service facts'
   service_facts:
@@ -34,4 +34,4 @@
   when:
     - 'ansible_facts.services[nscd_service_name] is defined'
   notify:
-    'Restart SSSD service'
+    - 'Restart SSSD service'
