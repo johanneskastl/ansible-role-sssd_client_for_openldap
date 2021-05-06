@@ -11,11 +11,12 @@
     path: "{{ path_to_nscd_conf }}"
     regex: "{{ item.regex }}"
     line: "{{ item.line }}"
+    backrefs: 'yes'
   loop:
-    - regex: '^enable-cache\s*passwd.*'
-      line: 'enable-cache            passwd  no'
-    - regex: '^enable-cache\s*group.*'
-      line: 'enable-cache            group   no'
+    - regex: '^(\s*enable-cache\s*passwd\s*)'
+      line: '\1no'
+    - regex: '^(\s*enable-cache\s*group\s*)'
+      line: '\1no'
   when: 'check_for_nscd_conf.stat.exists | bool'
   notify:
     'Restart SSSD service'
