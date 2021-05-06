@@ -23,6 +23,7 @@
 
 - name: 'Populate service facts'
   service_facts:
+  check_mode: 'false'
 
 - name: 'Disable the nscd service completely'
   service:
