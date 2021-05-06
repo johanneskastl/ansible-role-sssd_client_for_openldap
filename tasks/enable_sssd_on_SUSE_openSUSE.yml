@@ -1,0 +1,13 @@
+---
+# sssd_client_for_openldap/tasks/enable_sssd_on_SUSE_openSUSE.yml
+
+- name: 'Add sss in /etc/nsswitch.conf'
+  lineinfile:
+    path: '/etc/nsswitch.conf'
+    regex: "{{ item.regex }}"
+    line: "{{ item.line }}"
+  loop:
+    - regex: '^passwd:\scompat'
+      line: 'passwd: compat sss'
+    - regex: '^group:\s.*'
+      line: 'group:  compat sss'
