@@ -13,3 +13,19 @@
       line: 'group:  compat sss'
   notify:
     - 'Restart SSSD service'
+
+- name: 'Check if sss is enabled in the /etc/pam.d/common* files'
+  command:
+    cmd: "grep sss /etc/pam.d/common-account-pc /etc/pam.d/common-auth-pc /etc/pam.d/common-password-pc /etc/pam.d/common-session-pc"
+  register: grep_for_sss_in_pam_files
+  changed_when: 'false'
+  failed_when: 'false'
+  check_mode: 'false'
+
+- name: 'Run pam-config if sss is not yet in the configuration files'
+  command:
+    cmd: 'pam-config -a --sss'
+  when:
+    - 'grep_for_sss_in_pam_files.stdout == ""'
+  notify:
+    - 'Restart SSSD service'
