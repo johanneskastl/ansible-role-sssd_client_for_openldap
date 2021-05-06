@@ -11,3 +11,5 @@
       line: 'passwd: compat sss'
     - regex: '^group:\s.*'
       line: 'group:  compat sss'
+  notify:
+    - 'Restart SSSD service'
