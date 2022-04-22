@@ -1,5 +1,6 @@
 galaxy_info:
   role_name: 'sssd_client_for_openldap'
+  namespace: 'johanneskastl'
   author: 'Johannes Kastl'
   description: 'Connect sssd to a OpenLDAP server'
   company: 'B1 Systems GmbH'
