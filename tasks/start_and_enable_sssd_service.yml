@@ -2,11 +2,11 @@
 # sssd_client_for_openldap/tasks/start_and_enable_sssd_service.yml
 
 - name: 'Start the SSSD service'
-  service:
+  ansible.builtin.service:
     name: "{{ sssd_service }}"
     state: 'started'
 
 - name: 'Enable the SSSD service'
-  service:
+  ansible.builtin.service:
     name: "{{ sssd_service }}"
     enabled: 'true'
