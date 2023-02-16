@@ -25,7 +25,7 @@ Example Playbook
 
     - hosts: servers
       roles:
-         - { role: 'johanneskastl.sssd_client_for_openldap' }
+         - role: 'johanneskastl.sssd_client_for_openldap'
 
 License
 -------
