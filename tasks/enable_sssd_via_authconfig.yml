@@ -2,7 +2,7 @@
 # sssd_client_for_openldap/tasks/enable_sssd_via_authconfig
 
 - name: 'Check if USESSSD is already enabled in /etc/sysconfig/authconfig'
-  command:
+  ansible.builtin.command:
     cmd: 'grep USESSSD=yes /etc/sysconfig/authconfig'
   register: usesssd_in_sysconfig_authconfig
   check_mode: 'false'
@@ -10,14 +10,14 @@
   failed_when: 'usesssd_in_sysconfig_authconfig.rc != 0 and usesssd_in_sysconfig_authconfig.stdout != ""'
 
 - name: 'Run authconfig --enablesssd --update'
-  command:
+  ansible.builtin.command:
     cmd: 'authconfig --enablesssd --update'
   when: 'usesssd_in_sysconfig_authconfig.stdout == ""'
   notify:
     'Restart SSSD service'
 
 - name: 'Check if USESSSDAUTH is already enabled in /etc/sysconfig/authconfig'
-  command:
+  ansible.builtin.command:
     cmd: 'grep USESSSDAUTH=yes /etc/sysconfig/authconfig'
   register: usesssdauth_in_sysconfig_authconfig
   check_mode: 'false'
@@ -25,7 +25,7 @@
   failed_when: 'usesssdauth_in_sysconfig_authconfig.rc != 0 and usesssdauth_in_sysconfig_authconfig.stdout != ""'
 
 - name: 'Check if sss is already in configuration files'
-  shell:
+  ansible.builtin.shell:
     cmd: 'grep sss /etc/pam.d/*'
   register: sss_in_pam_configuration
   check_mode: 'false'
@@ -33,7 +33,7 @@
   failed_when: 'sss_in_pam_configuration.rc != 0 and sss_in_pam_configuration.stdout != ""'
 
 - name: 'Run authconfig --enablesssdauth --update'
-  command:
+  ansible.builtin.command:
     cmd: 'authconfig --enablesssdauth --update'
   when: 'sss_in_pam_configuration.stdout == "" or usesssdauth_in_sysconfig_authconfig == ""'
   notify:
