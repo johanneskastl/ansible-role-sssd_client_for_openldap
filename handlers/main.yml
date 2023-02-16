@@ -2,6 +2,6 @@
 # sssd_client_for_openldap/handlers/main.yml
 
 - name: 'Restart SSSD service'
-  service:
+  ansible.builtin.service:
     name: "{{ sssd_service }}"
     state: 'restarted'
