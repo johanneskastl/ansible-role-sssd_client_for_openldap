@@ -2,12 +2,12 @@
 # sssd_client_for_openldap/tasks/disable_nscd_caching.yml
 
 - name: 'Check if the nscd.conf is existing'
-  stat:
+  ansible.builtin.stat:
     path: "{{ path_to_nscd_conf }}"
   register: check_for_nscd_conf
 
 - name: 'Disable host and group caching in nscd.conf, if it exists'
-  lineinfile:
+  ansible.builtin.lineinfile:
     path: "{{ path_to_nscd_conf }}"
     regex: "{{ item.regex }}"
     line: "{{ item.line }}"
@@ -22,11 +22,11 @@
     - 'Restart SSSD service'
 
 - name: 'Populate service facts'
-  service_facts:
+  ansible.builtin.service_facts:
   check_mode: 'false'
 
 - name: 'Disable the nscd service completely'
-  service:
+  ansible.builtin.service:
     name: "{{ nscd_service_name }}"
     state: 'stopped'
     enabled: 'false'
