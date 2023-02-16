@@ -10,12 +10,12 @@ galaxy_info:
   min_ansible_version: 2.5
 
   platforms:
-  - name: EL
-    versions:
-    - 7
-  - name: Debian
-    versions:
-    - 10
+    - name: EL
+      versions:
+        - 7
+    - name: Debian
+      versions:
+        - 10
 
   galaxy_tags: []
 
