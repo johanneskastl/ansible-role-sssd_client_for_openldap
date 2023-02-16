@@ -2,6 +2,6 @@
 # sssd_client_for_openldap/tasks/install_packages.yml
 
 - name: 'Install SSSD packages'
-  package:
+  ansible.builtin.package:
     name: "{{ sssd_packages }}"
     state: 'present'
