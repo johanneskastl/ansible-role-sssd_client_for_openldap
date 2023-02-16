@@ -1,3 +1,5 @@
+![Ansible Lint](https://github.com/johanneskastl/ansible-role-sssd_client_for_openldap/workflows/Ansible%20Lint/badge.svg)
+
 sssd_client_for_openldap
 =========
 
