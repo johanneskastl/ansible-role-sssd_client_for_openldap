@@ -2,33 +2,33 @@
 # sssd_client_for_openldap/tasks/main.yml
 
 - name: "Load variables"
-  include_vars: "{{ item }}"
+  ansible.builtin.include_vars: "{{ item }}"
   with_first_found:
     - "vars_{{ ansible_distribution | replace(' ', '_' ) }}{{ ansible_distribution_major_version }}.yml"
     - "vars_{{ ansible_distribution | replace(' ', '_' ) }}.yml"
     - "vars_{{ ansible_os_family }}.yml"
 
 - name: 'Check for required variables'
-  fail:
+  ansible.builtin.fail:
     msg: 'You need to provide a value for ldap_tls_cacert or ldap_tls_cacertdir'
   when: 'ldap_tls_cacert is undefined and ldap_tls_cacertdir is undefined'
 
 - name: 'Install packages'
-  include_tasks: install_packages.yml
+  ansible.builtin.include_tasks: install_packages.yml
 
 - name: 'Disable nscd caching'
-  include_tasks: disable_nscd_caching.yml
+  ansible.builtin.include_tasks: disable_nscd_caching.yml
 
 - name: 'Enable sssd via authconfig'
-  include_tasks: enable_sssd_via_authconfig.yml
+  ansible.builtin.include_tasks: enable_sssd_via_authconfig.yml
   when: 'ansible_os_family == "RedHat"'
 
 - name: 'Enable sssd on SUSE/openSUSE'
-  include_tasks: enable_sssd_on_SUSE_openSUSE.yml
+  ansible.builtin.include_tasks: enable_sssd_on_SUSE_openSUSE.yml
   when: 'ansible_os_family == "Suse"'
 
 - name: 'Configure SSSD'
-  include_tasks: configure_sssd.yml
+  ansible.builtin.include_tasks: configure_sssd.yml
 
 - name: 'Start and enable the SSSD service'
-  include_tasks: start_and_enable_sssd_service.yml
+  ansible.builtin.include_tasks: start_and_enable_sssd_service.yml
